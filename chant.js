@@ -6,7 +6,7 @@ samples({
 'arab': '/arab.wav',
 }, 'http://localhost:5432')
 
-_$: s("arab")
+$: s("arab")
   .scrub("{.26@32}%8")
   .gain(.1)
 
@@ -15,9 +15,8 @@ $: n("0 1 [~ 5] [~ 5]")
   .room(0.4)
   .gain(0.3)
 
-$: note("<g3 ~ g4 g#4>*8")
-   .vst("d2")
-
-_$: note("<g2 ~ g2 ~>*4")
+$: note("<e2 ~ e3 ~>*4")
    .vst("d1")
-   .gain(1.2)
+   .gain(0.8)
+
+// d1 = SurgeXT, pads pad7
