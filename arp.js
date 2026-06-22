@@ -6,6 +6,10 @@ $: n("[0 2 4 7 4 7 6 4]*2")
   .gain(0.2)
   .vst("arp")
 
+$: n("[[0 0 0] ~ [0 2 0] ~]")
+   .scale("[G:minor G:minor G:minor G:major]/4")
+   .vst("bass")
+
 $: n("[0 0]")
    .scale("[G:minor G:minor G:minor G:major]/4")
    .gain(0.7)
