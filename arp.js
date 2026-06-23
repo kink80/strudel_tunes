@@ -2,9 +2,14 @@
 
 $: n("[0 2 4 7 4 7 6 4]*2")
   .scale("[G:minor G:minor G:minor G:major]/4")
-  .swingBy(1/3, 4)
+  //.swingBy(1/3, 4)
+  .rev()
   .gain(0.2)
   .vst("arp")
+
+_$: n("[[0 0 ] ~ ~ ~]")
+   .scale("[G:minor G:minor G:minor G:major]/4")
+   .vst("bass")
 
 $: n("[[0 0 0] ~ [0 2 0] ~]")
    .scale("[G:minor G:minor G:minor G:major]/4")
@@ -22,10 +27,10 @@ $: pure(1)
    .ccv(sine.range(0.3, 0.5).slow(4))
    .vst("drone")
 
-$: s("bd [bd bd] bd [bd bd]")
+$: s("bd bd bd bd")
    .bank('tr909')
    .room(1.2)
-   .gain(0.2)
+   .gain(0.6)
 
 $: s("[oh hh] [~ hh] ~ hh")
    .bank('tr909')
