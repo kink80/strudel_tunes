@@ -3,7 +3,7 @@
 $: n("[0 2 4 7 4 7 6 4]*2")
   .scale("[G:minor G:minor G:minor G:major Eb:lydian Eb:lydian D:phrygian D:phrygian]/8")
   .scramble(4)
-  .rev()
+  //.rev()
   .gain(0.2)
   .vst("arp")
 
@@ -18,7 +18,7 @@ _$: n("[[0 0] ~ 0]")
    .scale("[G:minor G:minor G:minor G:major Eb:lydian Eb:lydian D:phrygian D:phrygian]/8")
    .vst("bass")
 
-$: n("[[0 0 0] ~ [0 2 0] ~]")
+$: n("[[0 7] [0 7] [2 7] [5 7]]")
    .scale("[G:minor G:minor G:minor G:major Eb:lydian Eb:lydian D:phrygian D:phrygian]/8")
    .vst("bass")
 
@@ -49,7 +49,7 @@ $: s("bd [bd bd] bd [bd bd]")
 $: s("[oh hh] [~ hh] ~ hh")
    .bank('tr909')
    .room(1.2)
-   .gain(0.2)
+   .gain(0.1)
 
 $: s("~ ~ [cp cp] ~".delay(.3))
    .bank('tr909')
