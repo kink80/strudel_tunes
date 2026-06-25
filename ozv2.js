@@ -1,8 +1,4 @@
-let kick = 
-  s("bd*4")
-  .bank('tr909')
-  .gain(0.2)
-  .room(0.1)
+setcpm(130/4)
 
 let hh =
    s("[~ hh]*2")
@@ -29,7 +25,9 @@ let base =
     .gain(0.7)
 
 let arp = 
-   note("e4 g4 b4 a4 c5 b4 g4 e4")
+   note("0 2 4 3 5 4 2 0")
+    .scale("e:minor") // Maps the numbers to the E minor scale
+    .add("<0 0 3 3 5 5 4 4>") // Shifts the pattern to follow your 8-bar chord progression!
     .fast(2) // Play it as 16th notes
     .s("sawtooth")
     .lpf(sine.range(400, 2500).slow(8)) // Slow LFO on the filter for movement
@@ -40,45 +38,32 @@ let arp =
     .gain(0.5)
 
 let drone = 
-  chord("<Em9 [Em9 Em9] Am9 Am9 CM7 CM7 Bm7 Bm7>")
+  chord("<Em9 [Em9 Em9] Am9 [Am9 Am9] CM7 CM7 Bm7 Bm7>")
   .voicing()
+  .swing(4)
   .vst("drone")
   ._pianoroll()
 
+let realbassLine = 
+    note("<[e2]*4 [[e2]*2 [~ b2] [e2]] [a2]*4 [[a2]*2 [e3] [a3 a3]] [c3]*4 [[c3]*2 [g3] [c3]] [b2]*4 [[b2]*2 [f#3] [b2]]>")
+    .vst("realbass")
 
 let bassLine = 
-    note("<[~ e1]*4 [~ e1]*4 [~ a1]*4 [~ a1]*4 [~ c2]*4 [~ c2]*4 [~ b1]*4 [~ b1]*4>")
-    .s("triangle") // A nice subby, deep wave
-    .cutoff(400)   // Filters out the highs for that dub techno feel
-    .decay(0.2)
-// let drone = 
-//   note("e3, g3, b3").s("saw")
-//     .attack(2).release(4) // Slow, sweeping pad
-//     .lpf(400) // Keep it dark and muted
-//     .room(0.9)
-//     .pan(sine.range(0.2, 0.8).fast(2))
-//     .gain(0.3)
+    note("<[~ e1]*4 [[~ e1]*2 [~ b1] [~ e2 e1]] [~ a1]*4 [[~ a1]*2 [~ e2] [~ a2 a1]] [~ c2]*4 [[~ c2]*2 [~ g2] [~ c3 c2]] [~ b1]*4 [[~ b1]*2 [~ f#2] [~ b2 b1]]>")
+    .gain(0.4)
+    .vst("bass")
+
+let gentleBeat =
+   note("[~ e1] [~ ~ e1 ~] [~ ~ e1 ~] [e1]")
+    .gain(0.4)
+    .vst("beat")
 
 stack(
-  // 1. The steady, driving 4/4 Kick Drum
-  //kick,
-
-  // 2. The off-beat Techno Hi-Hats
-  //hh,
-
-  // 3. A distant Clap/Snare on the 2 and 4
-  //snare,
-
-  // 4. The Rolling Dark Bassline 
-  // Using a 3-against-8 polyrhythm feel that is common in melodic techno
-  //base,
-
-  // 5. The Plucky Arpeggio / Melodic synth
-  // This simulates the driving, hypnotic synth lines in the track
-  //arp,
+  hh,
+  snare,
   bassLine,
-  // 6. Atmospheric Drone / Pads (The "Oz" Atmosphere)
-  // Playing an E-minor chord that fades in and out
-  drone
-
+  drone,
+  gentleBeat,
+  arp,
+  realbassLine
 )
