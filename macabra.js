@@ -1,13 +1,22 @@
-setCpm(240/8)
+setCpm(280/8)
 
-$: note("e@4 e@2 e@4 e@2")
-  //.late(0.15)
+$: n("0@4 0@2 0@4 0@2")
+  .scale("[E:lydian C:major G:major D:major]/4")
+  .late(0.15)
   .vst("bass")
 
-_$: note("d4@2 e4@3 f4@3")
-  .vst("pad")
+_$: note("e4(<2 5 3 2>, 8, <0 0 2 0>)")
+   .vst("stab")
 
-$: note("<d4 e4 f4 e4 g4 f4 e4@2>*4")
+$: n("-1@2 0@3 1@3")
+   .scale("[E:lydian C:major G:major D:major]/4")
+   .vst("pad")
+
+
+$: n("[0 2 4 7 4 7 6 4]*2")
+  .scale("[E:lydian C:minor G:minor D:major]/4")
+  //.rev()
+  .gain(0.2)
   .vst("pad2")
 
 
@@ -18,6 +27,6 @@ $: note("e4(<7 9 9 8 9 13>, 16, <0 0 2 0>)")
 $: note("e4(<3 5 6 3>, 8, <0 0 2 0>)")
   .vst("hh")
 
-_$: note("<e4 e4 e4 e4>*4")
+$: note("<e4 e4 e4 e4>*4")
    .vst("hat")
 
